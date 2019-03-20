@@ -24,7 +24,7 @@ display_height = 500
 #displaying the windows
 game_display = pg.display.set_mode((display_width, display_height))
 
-pg.display.set_caption("image/racing game")
+pg.display.set_caption("racing game")
 background_color = [119,118,110]
 game_display.fill(background_color)
 pg.display.flip()
