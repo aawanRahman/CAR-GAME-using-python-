@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Mar 15 04:46:56 2019
-
-@author:awan-ur-rahman
-"""
 
 import pygame as pg
 import cv2
@@ -30,21 +24,21 @@ display_height = 500
 #displaying the windows
 game_display = pg.display.set_mode((display_width, display_height))
 
-pg.display.set_caption("racing game")
+pg.display.set_caption("image/racing game")
 background_color = [119,118,110]
 game_display.fill(background_color)
 pg.display.flip()
 clock = pg.time.Clock()
 
 
-#car_img = cv2.imread("car1.png",1)
+#car_img = cv2.imread("image/car1.png",1)
 #car_img = cv2.resize(car_img, (50,80))
 #cv2.imwrite("car5.png", car_img)
 
 # =============================================================================
 # load image and scaling 
 # =============================================================================
-car_image = pg.image.load("car11.png")
+car_image = pg.image.load("image/car11.png")
 car_image = pg.transform.scale(car_image, (30, 60))
 car_width = 30
 
@@ -52,23 +46,23 @@ car_width = 30
 # #load obstacle car image..
 # =============================================================================
 
-obstacle_pic = pg.image.load("car1.png")
+obstacle_pic = pg.image.load("image/car1.png")
 obstacle_pic = pg.transform.scale(obstacle_pic, (50, 80))
 #car_width = 50
 
-obstacle_image2 = pg.image.load("car2.png")
+obstacle_image2 = pg.image.load("image/car2.png")
 obstacle_image2 = pg.transform.scale(obstacle_image2, (50, 80))
 #car_width = 50
 
-obstacle_image3 = pg.image.load("car3.png")
+obstacle_image3 = pg.image.load("image/car3.png")
 obstacle_image3 = pg.transform.scale(obstacle_image3, (50, 80))
 #car_width = 50
 
-obstacle_image4 = pg.image.load("car4.png")
+obstacle_image4 = pg.image.load("image/car4.png")
 obstacle_image4 = pg.transform.scale(obstacle_image4, (50, 80))
 #car_width = 50
 
-obstacle_image5 = pg.image.load("car5.png")
+obstacle_image5 = pg.image.load("image/car5.png")
 obstacle_image5 = pg.transform.scale(obstacle_image5, (50, 80))
 #car_width = 50
 
@@ -77,24 +71,24 @@ obstacle_image5 = pg.transform.scale(obstacle_image5, (50, 80))
 # #introduction pic of game ...
 # =============================================================================
 
-instuction_pic =  pg.image.load("introduction.jpg")
+instuction_pic =  pg.image.load("image/introduction.jpg")
 instuction_pic = pg.transform.scale(instuction_pic, (500, 480))
-start_background =  pg.image.load("intro_pic.png")
+start_background =  pg.image.load("image/intro_pic.png")
 start_background = pg.transform.scale(start_background, (500,480))
 
 # =============================================================================
 # #load background image 
 # =============================================================================
 
-background_roadside = pg.image.load("white.jpg")
+background_roadside = pg.image.load("image/white.jpg")
 background_roadside = pg.transform.scale(background_roadside, (2,500))
 
-background_border = pg.image.load("black1.png")
+background_border = pg.image.load("image/black1.png")
 background_border = pg.transform.scale(background_roadside, (2,500))
 
-background_grass = pg.image.load("grass.jpg")
+background_grass = pg.image.load("image/grass.jpg")
 background_grass = pg.transform.scale(background_grass, (80,500))
-background_roadstrip = pg.image.load("strip.png")
+background_roadstrip = pg.image.load("image/strip.png")
 background_roadstrip = pg.transform.scale(background_roadstrip, (3,50))
 # rect = car_image.get_rect() -->GET THE BOUNDARY RECTANGLE OF THE PICTURE
 
@@ -456,6 +450,8 @@ if __name__ == "__main__":
     
    Start_Page()
 #   game_loop () 
+
+
 
 
 
