@@ -1,9 +1,11 @@
-
+# -*- coding: utf-8 -*-
 """
+Created on Fri Mar 15 04:46:56 2019
+
 @author:awan-ur-rahman
 """
+
 import pygame as pg
-import cv2
 import time 
 import random 
 import sys
@@ -34,14 +36,14 @@ pg.display.flip()
 clock = pg.time.Clock()
 
 
-#car_img = cv2.imread("image/car1.png",1)
+#car_img = cv2.imread("car1.png",1)
 #car_img = cv2.resize(car_img, (50,80))
 #cv2.imwrite("car5.png", car_img)
 
 # =============================================================================
 # load image and scaling 
 # =============================================================================
-car_image = pg.image.load("image/car11.png")
+car_image = pg.image.load("car11.png")
 car_image = pg.transform.scale(car_image, (30, 60))
 car_width = 30
 
@@ -49,23 +51,23 @@ car_width = 30
 # #load obstacle car image..
 # =============================================================================
 
-obstacle_pic = pg.image.load("image/car1.png")
+obstacle_pic = pg.image.load("car1.png")
 obstacle_pic = pg.transform.scale(obstacle_pic, (50, 80))
 #car_width = 50
 
-obstacle_image2 = pg.image.load("image/car2.png")
+obstacle_image2 = pg.image.load("car2.png")
 obstacle_image2 = pg.transform.scale(obstacle_image2, (50, 80))
 #car_width = 50
 
-obstacle_image3 = pg.image.load("image/car3.png")
+obstacle_image3 = pg.image.load("car3.png")
 obstacle_image3 = pg.transform.scale(obstacle_image3, (50, 80))
 #car_width = 50
 
-obstacle_image4 = pg.image.load("image/car4.png")
+obstacle_image4 = pg.image.load("car4.png")
 obstacle_image4 = pg.transform.scale(obstacle_image4, (50, 80))
 #car_width = 50
 
-obstacle_image5 = pg.image.load("image/car5.png")
+obstacle_image5 = pg.image.load("car5.png")
 obstacle_image5 = pg.transform.scale(obstacle_image5, (50, 80))
 #car_width = 50
 
@@ -74,24 +76,24 @@ obstacle_image5 = pg.transform.scale(obstacle_image5, (50, 80))
 # #introduction pic of game ...
 # =============================================================================
 
-instuction_pic =  pg.image.load("image/introduction.jpg")
+instuction_pic =  pg.image.load("introduction.jpg")
 instuction_pic = pg.transform.scale(instuction_pic, (500, 480))
-start_background =  pg.image.load("image/intro_pic.png")
+start_background =  pg.image.load("intro_pic.png")
 start_background = pg.transform.scale(start_background, (500,480))
 
 # =============================================================================
 # #load background image 
 # =============================================================================
 
-background_roadside = pg.image.load("image/white.jpg")
+background_roadside = pg.image.load("white.jpg")
 background_roadside = pg.transform.scale(background_roadside, (2,500))
 
-background_border = pg.image.load("image/black1.png")
+background_border = pg.image.load("black1.png")
 background_border = pg.transform.scale(background_roadside, (2,500))
 
-background_grass = pg.image.load("image/grass.jpg")
+background_grass = pg.image.load("grass.jpg")
 background_grass = pg.transform.scale(background_grass, (80,500))
-background_roadstrip = pg.image.load("image/strip.png")
+background_roadstrip = pg.image.load("strip.png")
 background_roadstrip = pg.transform.scale(background_roadstrip, (3,50))
 # rect = car_image.get_rect() -->GET THE BOUNDARY RECTANGLE OF THE PICTURE
 
@@ -207,7 +209,7 @@ def button(message,x,y,w,h,ic, ac , action = None ):
 # =============================================================================
 # image display on the screen 
 # =============================================================================
-def Car(x , y ) :
+def Car(x , y  ) :
     global game_display
     global car_image
     game_display.blit(car_image , (x, y))
@@ -218,7 +220,7 @@ def Car(x , y ) :
 
 #backgroundimage
 
-def Background(real_y , background_moved , obstacles_speed) :
+def Background() :
     global background_roadside, background_grass, background_roadstrip , game_display
     #left grass 
     
@@ -230,26 +232,26 @@ def Background(real_y , background_moved , obstacles_speed) :
 #        game_display.blit(background_grass, (420,real_y))
     
     
+    game_display.fill(background_color)
+    game_display.blit(background_grass , (0, 0))
+    game_display.blit(background_grass , (0, 140))
+    game_display.blit(background_grass , (0, 270))
+    game_display.blit(background_grass , (0, 400))
     
-#    game_display.blit(background_grass , (0, 0))
-#    game_display.blit(background_grass , (0, 140))
-#    game_display.blit(background_grass , (0, 270))
-#    game_display.blit(background_grass , (0, 400))
-#    
-#    #right grass 
-#    game_display.blit(background_grass , (420, 0))
-#    game_display.blit(background_grass , (420, 140))
-#    game_display.blit(background_grass , (420, 270))
-#    game_display.blit(background_grass , (420, 400))
+    #right grass 
+    game_display.blit(background_grass , (420, 0))
+    game_display.blit(background_grass , (420, 140))
+    game_display.blit(background_grass , (420, 270))
+    game_display.blit(background_grass , (420, 400))
 #    
     #road border
-    game_display.blit(background_roadside , (80, 0)) #left
-    game_display.blit(background_roadside , (420, 0)) #right
+    game_display.blit(background_roadside , (85, 0)) #left
+    game_display.blit(background_roadside , (413, 0)) #right
     
     #road strip 
     x=0
     for i in range(0,500,50) :
-          game_display.blit(background_roadstrip ,  (249, real_y + (i+(x*20))))
+          game_display.blit(background_roadstrip ,  (249,  (i+(x*20))))
           x=x+1
 
 def Text_Objects(text , font) :
@@ -311,7 +313,50 @@ def Score_system(passed , score) :
     game_display.blit(passed_text, (0,100))
     game_display.blit(score_text, (0,70))
     
+#function for countdown background...
     
+def Countdown_background() :
+      x = display_width *0.47
+      y = 440
+      Background()
+      Car(x,y)
+      Score_system(0,0)
+      
+      
+#function for countdown .......
+     
+def Countdown() :
+    
+    countdown = True 
+    font = pg.font.SysFont(None ,80)
+    
+    while countdown :
+        for event in pg.event.get():
+            if event.type is pg.QUIT:
+                countdown = False
+                pg.quit()
+        for i in range(0,4) :
+            Countdown_background()
+            text = font.render(str(i ), True , (255,0,0))
+            game_display.blit(text, (235,250))
+            
+#            largetext = pg.font.Font("freesansbold.ttf", 50)
+#            text_surf , text_rect = Text_Objects(str(i), largetext)
+#            text_rect.center = (240 , 250)
+#            game_display.blit(text_surf , text_rect)
+            
+            pg.display.update()
+            clock.tick(1)
+            
+        font = pg.font.SysFont(None , 50)
+        Countdown_background()
+        text = font.render("LET'S GO!!", True , (255,255,255))
+        game_display.blit(text, (175,250))
+        pg.display.update()
+        clock.tick(1)
+        countdown = False
+        
+        
 
 
 def game_loop () :
@@ -331,7 +376,7 @@ def game_loop () :
     level = 0 
     score = 0
    
-    
+    Countdown()
     while running :
         x_change = 0
         y_change = 0
@@ -381,8 +426,8 @@ def game_loop () :
        
 #        Background(real_y , background_moved , obstacles_speed)
         
-        game_display.blit(background_roadside , (80, 0)) #left
-        game_display.blit(background_roadside , (418, 0)) #right
+        game_display.blit(background_roadside , (85, 0)) #left
+        game_display.blit(background_roadside , (413, 0)) #right
         game_display.blit(background_grass, (0,real_y - background_grass.get_rect().height))
      
         game_display.blit(background_grass, (420,real_y - background_grass.get_rect().height))
@@ -422,9 +467,12 @@ def game_loop () :
         Score_system(passed , score)
         if x>405 or x<65 :
             Crash()
+            Countdown()
                 
         if x > display_width - (car_width +40 ) or x <65 : 
             Crash()
+            Countdown()
+            
         if obstacles_starty > display_height :
             obstacles_starty = 0 - obstacle_height
             obstacles_startx = random.randrange(95,(display_width - 100))
@@ -445,6 +493,7 @@ def game_loop () :
 #            print( obstacle_height + obstacles_starty)
             if x>obstacles_startx and x < obstacles_startx + obstacle_width or x+car_width>obstacles_startx and x+car_width < obstacles_startx + obstacle_width :
                 Crash()
+                Countdown()
                        
         pg.display.update()
 
@@ -453,8 +502,6 @@ if __name__ == "__main__":
     
    Start_Page()
 #   game_loop () 
-
-
 
 
 
